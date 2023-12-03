@@ -21,8 +21,7 @@ const Questions = () => {
   const questionsList = questions.map((question, index) => (
     <div key={index}>
       <div className="card-body">
-        <h5 className="card-title"></h5>
-        <Link to={`/question/${question.id}`} className="btn custom-button">
+        <Link to={`/question/${question.id}`} className="btn custom-button my-1 w-100">
           {question.question}
         </Link>
       </div>
@@ -32,9 +31,9 @@ const Questions = () => {
   return (
     <>
       <section className="jumbotron jumbotron-fluid text-center">
-        <div className="container py-5">
-          <h1 className="display-4">List</h1>
-        </div>
+        <h3 className="container py-5">
+          Questions
+        </h3>
       </section>
       <div className="py-5">
         <main className="container">
@@ -49,7 +48,5 @@ const Questions = () => {
     </>
   );
 };
-
-
 
 export default Questions;
