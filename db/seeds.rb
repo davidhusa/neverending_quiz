@@ -26,7 +26,7 @@ riddles = [
   },
   {
     question: "The person who makes it, sells it. The person who buys it never uses it. What is it?",
-    options: ["Candle", "Car", "Computer", "Cake"],
+    options: ["Candle", "Coffin", "Computer", "Cake"],
     correct_answer: "Coffin"
   },
   {
