@@ -1,4 +1,5 @@
 # README
+Quiz application
 
 To run this application, you need to be running:
 Ruby 3.2.2
@@ -8,6 +9,8 @@ Postgres 14.9
 
 1) Install the gems with `bundle install`
 2) Update the `username` and `password` fields under `default` in `config/database.yml` to credentials on your local postgres db.
-3) Run `rails db:create` and `rails db:migrate`
-4) Start the server with `bin/dev`
-5) enjoy ;)
+3) Run `rails db:create`
+4) Run `rails db:migrate`
+5) Run `rails db:seed`
+6) Start the server with `bin/dev`
+7) enjoy ;)

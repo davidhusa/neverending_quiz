@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'questions/index'
       # post  'questions/create'
-      get '/show/:id', to: 'questions#show'
+      get 'questions/:id', to: 'questions#show'
       # delete '/destroy/:id', to: 'questions#destroy'
     end
   end
