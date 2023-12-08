@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 
 const Answer = (props) => {
   const activeClass = () => {
-    if (!props.isActive) return 'card-body'
+    let cssClass = 'answer ';
+    if (!props.isActive) return cssClass;
 
-    return props.answer.correct ? 'card-body correct' : 'card-body wrong'
+    return props.answer.correct ? cssClass + 'correct' : cssClass + 'wrong';
   }
 
   return (
-    <div className="row">
+    <div className="answer">
       <div className={activeClass()} onClick={props.selectAnswer}>
         { props.answer.answer }
       </div>

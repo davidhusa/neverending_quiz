@@ -18,26 +18,31 @@
   color: #FFF;
   border: none;
 }
-.hero {
-  width: 100vw;
-  height: 50vh;
-}
-.hero img {
-  object-fit: cover;
-  object-position: top;
-  height: 100%;
-  width: 100%;
-}
-.overlay {
-  height: 100%;
-  width: 100%;
-  opacity: 0.4;
-}
 
 .correct {
-  background-color: green;
+  background-color: #69bab3;
 }
 
 .wrong {
-  background-color: red;
+  background-color: #e57a82;
+}
+
+.correct-answer {
+  color: #69bab3;
+}
+
+.wrong-answer {
+  color: #e57a82;
+}
+
+.answer {
+  // border-radius: 10px 10px 10px 10px;
+  // -webkit-border-radius: 10px 10px 10px 10px;
+  // -moz-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  width: max-content;
+  padding: 2px 4px;
+  margin: 2px 0;
 }

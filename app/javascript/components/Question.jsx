@@ -34,18 +34,33 @@ const Question = () => {
     <Answer key={answer.id} answer={answer} isActive={selectedIndex === index} selectAnswer={() => setSelectedIndex(index)} />
   ));
 
-  const nextQuestionLink = <Link to={`/question/${question.next_question.id}`} className="btn custom-button my-1 w-100">Next Question</Link>
+  const nextQuestionLink = question.next_question ?
+    <Link to={`/question/${question.next_question.id}`} className="btn custom-button my-1 w-100">Next Question</Link> :
+    <Link to={`/questions`} className="btn custom-button my-1 w-100">Finish</Link>
+
+  const correctAnswerResult = <><div className="correct-answer">Correct!</div>{nextQuestionLink}</>
+
+  const wrongAnswerResult = <div className="wrong-answer">Incorrect!</div>
+
+  const answerResult = () => {
+    if(selectedIndex === -1) return
+
+    return answerCorrect() ? correctAnswerResult : wrongAnswerResult
+  }
 
   return (
-    <div className="m-3">
-      <h1>
-        { question.question }
-      </h1>
       <div className="container">
-        { answerList }
+        <h1>
+          { question.question }
+        </h1>
+        <div>
+          { answerList }
+        </div>
+        <div>
+          { answerResult() }
+        </div>
       </div>
-      { answerCorrect() ? nextQuestionLink : ''}
-    </div>
+
   );
 };
 
