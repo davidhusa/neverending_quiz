@@ -8,8 +8,8 @@ export default () => (
       <div className="container secondary-color">
         <h1 className="display-4">Quiz Game</h1>
         <div>
-          Welcome to the quiz game. Select your answer and you'll be told if you're right or wrong.
-          Keep selecting until you find the correct one and you'll move onto the next question.
+          Welcome to the quiz game. Select your answer and see if you're right or wrong.
+          Keep selecting until you find the correct answer to move onto the next question.
         </div>
 
         <Link
