@@ -41,7 +41,7 @@ const Questions = () => {
             {questionsList}
           </div>
           <Link to="/" className="btn btn-link">
-            Home
+            Reset to beginning
           </Link>
         </main>
       </div>
