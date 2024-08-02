@@ -1,8 +1,6 @@
 # Quiz application README
 This is a quiz game built in React with a Rails backend. Players can select answers until they find the correct one, upon which they'll be given a link to the next question until the end. Includes seed file with ten mind-bending riddles.
 
-Currently hosted at https://bit.ly/reactquiz23
-
 To run this application, you need to be running:
 * Ruby 3.2.2
 * Node.js v21.2.0
@@ -10,9 +8,11 @@ To run this application, you need to be running:
 * Postgres 14.9
 
 1) Install the gems with `bundle install`
-2) Update the `username` and `password` fields under `default` in `config/database.yml` to credentials on your postgres db.
-3) Run `rails db:create`
-4) Run `rails db:migrate`
-5) Run `rails db:seed`
-6) Start the server with `bin/dev`
-7) enjoy ;)
+2) Install yarn packages with `yarn install`
+3) Create a copy of the environment variable file with `cp .env.example .env`
+4) Assign your desired postgres username and password to `PG_DATABASE_USERNAME` and `PG_DATABASE_PASSWORD` respectively in `.env` file
+5) Run `rails db:create`
+6) Run `rails db:migrate`
+7) Run `rails db:seed`
+8) Start the server with `bin/dev`
+9) enjoy ;)
