@@ -2,6 +2,7 @@
 
 module Api
   module V1
+    # API endpoint for retrieving questions and answers
     class QuestionsController < ApplicationController
       def index
         @questions = Question.order(created_at: :desc).all

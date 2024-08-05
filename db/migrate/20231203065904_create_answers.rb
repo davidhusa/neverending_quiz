@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Create the table to support the Answer model
 class CreateAnswers < ActiveRecord::Migration[7.1]
   def change
     create_table :answers do |t|
