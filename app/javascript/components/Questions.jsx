@@ -5,6 +5,9 @@ const Questions = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
 
+  
+
+
   useEffect(() => {
     const url = "/api/v1/questions/index";
     fetch(url)

@@ -4,10 +4,11 @@ require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
   def setup
-    @question = Question.create(question: 'What is the capital of France?')
+    @topic = Topic.create(topic: 'Geography')
+    @question = Question.create(question: 'What is the capital of France?', topic: @topic)
     @question.answers << [Answer.new(answer: 'Paris', correct: true),
                           Answer.new(answer: 'London', correct: false)]
-    @question_two = Question.create(question: 'Who let the dogs out?')
+    @question_two = Question.create(question: 'Who let the dogs out?', topic: @topic)
     @question_two.answers << [Answer.new(answer: 'I did', correct: false),
                               Answer.new(answer: 'The dog unleasher', correct: true),
                               Answer.new(answer: 'All of us in our own way', correct: false)]

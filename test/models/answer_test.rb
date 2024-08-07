@@ -4,7 +4,8 @@ require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
   def setup
-    question = Question.create(question: 'What does it all mean?')
+    topic = Topic.create(topic: 'Philosophy')
+    question = Question.create(question: 'What does it all mean?', topic: topic)
     @answer_one = Answer.create(answer: '42', correct: true, question: question)
     @answer_two = Answer.create(answer: 'nm hbu', correct: false, question: question)
   end
