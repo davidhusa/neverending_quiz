@@ -7,7 +7,7 @@ module QuestionGenerator
 
     def initialize
       @ai_client = AIClient.new
-      @number_of_questions = 3
+      @number_of_questions = 50
     end
 
     def retrieve_questions(topic)
