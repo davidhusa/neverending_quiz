@@ -1,4 +1,4 @@
-# The Neverending Quiz Game
+# Neverending Quiz Game
 This is a quiz game built in React with a Rails backend and ChatGPT for generative content creation. Players can select answers until they find the correct one, upon which they'll be given a link to the next question until the end. Includes seed file with ten mind-bending riddles.
 
 To run this application, you need to be running:
