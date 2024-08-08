@@ -9,7 +9,7 @@ const Answer = (props) => {
   }
 
   return (
-    <div className="answer">
+    <div className="">
       <div className={activeClass()} onClick={props.selectAnswer}>
         { props.answer.answer }
       </div>

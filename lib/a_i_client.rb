@@ -23,7 +23,7 @@ class AIClient
   def send_message(message, role: 'user')
     response = @client.chat(parameters: {
                               model: DEFAULT_MODEL,
-                              messages: [{ role: 'user', content: message }],
+                              messages: [{ role:, content: message }],
                               temperature: 0.7
                             })
     @last_response = response

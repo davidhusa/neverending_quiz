@@ -5,16 +5,22 @@ module QuestionGenerator
   class Generator
     attr_reader :ai_client
 
-    def initialize
-      @ai_client = AIClient.new
-      @number_of_questions = 50
+    def initialize(ai_client: AIClient.new, number_of_questions: 50)
+      @ai_client = ai_client
+      @number_of_questions = number_of_questions
     end
+
+    def import_topic(topic)
+      question_hashes = retrieve_questions(topic)
+      generate_models(question_hashes, topic)
+    end
+
+    private
 
     def retrieve_questions(topic)
       question_response_text = retrieve_raw_question_text(topic)
       puts "question_response_text: #{question_response_text}"
-      question_hashes = process_response_text_to_hashes(question_response_text)
-      generate_models(question_hashes, topic)
+      process_response_text_to_hashes(question_response_text)
     end
 
     def generate_models(question_hashes, topic)
@@ -45,7 +51,7 @@ module QuestionGenerator
 
     def construct_question_hash(question_and_answers_text)
       questions_and_answers = question_and_answers_text.strip.split("\n")
-      question = questions_and_answers[0]&.strip
+      question = sanitize_question_text(questions_and_answers[0])
       correct_answer = questions_and_answers[1]&.strip
       return unless question.present? && correct_answer.present?
 
@@ -54,6 +60,16 @@ module QuestionGenerator
       end.compact.map(&:strip)
 
       { question:, correct_answers: [correct_answer], wrong_answers: }
+    end
+
+    # Filters out possible question numbers and returns the question text
+    def sanitize_question_text(question_text)
+      return unless question_text.present?
+
+      question_text
+        .strip
+        .scan(/^(\d+\.\s+){,1}(.+)$/)
+        .dig(-1, -1)
     end
 
     def trivia_prompt(topic)
