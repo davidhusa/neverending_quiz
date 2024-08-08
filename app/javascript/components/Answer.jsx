@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Answer = (props) => {
   const activeClass = () => {
@@ -9,7 +9,7 @@ const Answer = (props) => {
   }
 
   return (
-    <div className="">
+    <div>
       <div className={activeClass()} onClick={props.selectAnswer}>
         { props.answer.answer }
       </div>

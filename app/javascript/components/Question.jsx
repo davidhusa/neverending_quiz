@@ -36,11 +36,21 @@ const Question = () => {
     <Answer key={answer.id} answer={answer} isActive={selectedIndex === index} selectAnswer={() => setSelectedIndex(index)} />
   ));
 
-  const nextQuestionLink = question.next_question ?
-    <Link to={`/question/${question.next_question.id}`} className="btn custom-button my-1 w-100">Next Question</Link> :
-    <Link to={`/questions`} className="btn custom-button my-1 w-100">Finish</Link>
+  const nextQuestionLinks = () => {
+    const links = [];
+    if (question.next_question) {
+      links.push(<Link key={question.next_question.id} to={`/question/${question.next_question.id}`} className="btn custom-button my-1 w-100">Next Question</Link>);
+    }
+    if (question.next_topic_first_question) {
+      links.push(<Link key={question.next_topic_first_question.id} to={`/question/${question.next_topic_first_question.id}`} className="btn custom-button my-1 w-100">Next Topic</Link>);
+    }
+    if (links.length === 0) {
+      links.push(<Link key="finish" to={`/questions`} className="btn custom-button my-1 w-100">Finish</Link>);
+    }
+    return links;
+  } 
 
-  const correctAnswerResult = <><div className="correct-answer">Correct!</div>{nextQuestionLink}</>
+  const correctAnswerResult = <><div className="correct-answer">Correct!</div>{nextQuestionLinks()}</>
 
   const wrongAnswerResult = <div className="wrong-answer">Incorrect!</div>
 
