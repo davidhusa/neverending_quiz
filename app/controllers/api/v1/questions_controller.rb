@@ -13,7 +13,7 @@ module Api
         # allow passing 'first' to get first question
         params[:id] = Question.first.id if params[:id] == 'first'
         @question = Question.find(params[:id])
-        render json: @question.to_json(include: %i[answers next_question next_topic_first_question])
+        render json: @question.to_json(include: %i[answers next_question topic next_topic_first_question])
       end
     end
   end

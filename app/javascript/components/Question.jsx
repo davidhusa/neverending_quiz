@@ -62,6 +62,7 @@ const Question = () => {
 
   return (
       <div className="container">
+        { question.topic && <h3>{ question.topic.topic }</h3> }
         <h1>
           { question.question }
         </h1>

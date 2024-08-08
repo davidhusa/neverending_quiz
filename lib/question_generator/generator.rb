@@ -5,7 +5,7 @@ module QuestionGenerator
   class Generator
     attr_reader :ai_client
 
-    def initialize(ai_client: AIClient.new, number_of_questions: 3)
+    def initialize(ai_client: AIClient.new, number_of_questions: 25)
       @ai_client = ai_client
       @number_of_questions = number_of_questions
     end
