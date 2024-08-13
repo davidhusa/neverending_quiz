@@ -4,12 +4,11 @@ require 'openai'
 
 # Wrapper for OpenAI API
 class AIClient
-  DEFAULT_MODEL = 'gpt-4o-mini'
   attr_reader :client, :model
   attr_accessor :last_response
 
   def initialize(model: nil)
-    @model = model || DEFAULT_MODEL
+    @model = model || ENV['DEFAULT_OPENAI_MODEL']
     @client = ::OpenAI::Client.new(
       access_token: ENV['OPENAI_API_KEY'],
       log_errors: true
@@ -18,7 +17,7 @@ class AIClient
 
   def send_message(message, system_prompt: nil)
     response = @client.chat(parameters: {
-                              model: DEFAULT_MODEL,
+                              model: @model,
                               messages: messages_array(message, system_prompt),
                               temperature: 0.7
                             })

@@ -5,7 +5,7 @@ module QuestionGenerator
   class Generator
     attr_reader :ai_client
 
-    def initialize(ai_client: AIClient.new, number_of_questions: 25)
+    def initialize(ai_client: AIClient.new, number_of_questions: 5)
       @ai_client = ai_client
       @number_of_questions = number_of_questions
     end
@@ -15,12 +15,21 @@ module QuestionGenerator
       generate_models(question_hashes, topic)
     end
 
-    private
+    # private
 
     def retrieve_questions(topic)
       question_response_text = retrieve_raw_question_text(topic)
       puts "question_response_text: #{question_response_text}"
       process_response_text_to_hashes(question_response_text)
+    end
+
+    def get_some(topic)
+      goodies = []
+      goodies << process_response_text_to_hashes(retrieve_raw_question_text(topic))
+      goodies << process_response_text_to_hashes(retrieve_additional_question_text(topic))
+      goodies << process_response_text_to_hashes(retrieve_additional_question_text(topic))
+      goodies << process_response_text_to_hashes(retrieve_additional_question_text(topic))
+      goodies
     end
 
     def generate_models(question_hashes, topic)
@@ -38,6 +47,10 @@ module QuestionGenerator
 
     def retrieve_raw_question_text(topic)
       @ai_client.send_message(trivia_prompt(topic), system_prompt:)
+    end
+
+    def retrieve_additional_question_text(topic)
+      @ai_client.send_message(additional_trivia_prompt(topic), system_prompt:)
     end
 
     def process_response_text_to_hashes(question_response_text)
@@ -74,6 +87,12 @@ module QuestionGenerator
     def trivia_prompt(topic)
       <<~PROMPT.chomp
         Generate to #{@number_of_questions} questions about #{topic}.
+      PROMPT
+    end
+
+    def additional_trivia_prompt(topic)
+      <<~PROMPT.chomp
+        Generate new, different questions about #{topic}.
       PROMPT
     end
 
