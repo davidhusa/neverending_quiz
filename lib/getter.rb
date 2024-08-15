@@ -122,9 +122,10 @@ end
 # def process_question_and_answers(question_text)
 # end
 #
-JSON_TAG = /\A```json(.*)```\z/m
+JSON_IN_MARKUP_TAG = /\A```json(.*)```\z/m
 def process_json(message)
-  json_text = message.scan(JSON_TAG).dig(0, 0) || message
+  # Sometimes the AI returns the object in a markup Json tag, sometimes it doesn't
+  json_text = message.scan(JSON_IN_MARKUP_TAG).dig(0, 0) || message
 
   JSON.parse(json_text)
 end
